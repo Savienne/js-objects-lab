@@ -13,31 +13,42 @@
     biggestNum: 100,
     smallestNum: 1,
     secretNum: 35,
-    // Initialize prevGuesses as an array
-   
-    play: function () {
-      // Get the secretNum from the range
+    prevGuesses:[],
+
+   play: function () {
       this.secretNum = Math.floor(Math.random() * 
         (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
 
-        console.log(this.secretNum)
-      // We want to run the game loop at least once, so a do...while loop works well here
-    }
-}
-    game.play ()
-//       const secretNum = 35
+       do {
+        this.prevGuesses.push(this.getGuess())
+       } while (this.prevGuesses[this.prevGuesses.length - 1] !== this.secretNum);
+           
 
-//       if(secretNum === 35) {
-//           console.log('Congrats! You Guessed The Secret Number!)
-      
-//       }else if{ (x > 1 x < 100 !== 35)  
-//         } else{
-//           console.log ('Sorry, Try Again!');
-// {}      
-//       let secretNum = 35;
-//        while secretNum <= 100 && >=1
-    // Get the player's valid guess and push it into the prevGuesses array
+    } ,
+
+    render: function() {
+        
+        let msg = ''
+
+                 
+
+        if (this.prevGuesses[this.prevGuesses.length - 1] === this.secretNum){
+            msg = `Congrats! You guessed the number in ${this.prevGuesses[this.prevGuesses.length - 1]}!`
+        }
+        else {
+            msg = `Your guess is too "high" "low" Previous guesses: ${this.prevGuesses}`
+        
+        }
+     alert(msg)
+    }
+
+
+  }
+    game.play
+
         // Call the render method and render the result of the player's guess
+          
+    // this.prevGuesses.join(prevGuesses[high][low]).render
         // If the player's last guess was not the secretNum, do it all again!
       // initialize a guess variable
   
@@ -55,3 +66,6 @@
         //     `Enter a number - this will be the low end of the range.`
         //   )
         // );
+
+
+        ///still need get user input//
